@@ -18,9 +18,10 @@ const SignupLoginStyled = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  transition: background-color ease-in-out 0.5s;
+  background: rgba(0,0,0,0);
+  transition: background-color ease-in-out 0.25s;
   &.in{
-    background: rgba(0,0,0, 0.1);  
+    background: rgba(0,0,0, 0.2);  
   }
  
 `;
@@ -30,10 +31,14 @@ const $ = window.$
 export default class SignupLogin extends PureComponent {
     state = {mode:'login', success:false, data:{}, show:'', msg:{}};
     onClose = () => {
-        this.setState({show:'out'})
+        this.setState({show:'out'}, ()=>{
+            this.props.onClose();
+        })
     };
     componentDidMount(){
-        this.setState({show:'in', mode:this.props.token?'changePassword':this.props.mode})
+        setTimeout(()=>{
+            this.setState({show:'in', mode:this.props.token?'changePassword':this.props.mode})
+        })
     }
     onAction = (action, data, e) => {
         e.preventDefault();
@@ -89,7 +94,7 @@ export default class SignupLogin extends PureComponent {
                               msg={s.msg} error={s.error}
                               clearMsg={()=>{this.setState({msg:{}})}}
                               onAction={this.onAction}
-                              onClose={p.onClose}/>;
+                              onClose={this.onClose}/>;
             case 'signup':
                 return <Signup onChangeMode={this.onChangeMode}
                                ref='signup'
@@ -97,7 +102,7 @@ export default class SignupLogin extends PureComponent {
                                progress={s.progress}
                                msg={s.msg} error={s.error}
                                clearMsg={()=>{this.setState({msg:{}})}}
-                               onClose={p.onClose}
+                               onClose={this.onClose}
                                onAction={this.onAction}/>;
              case 'restore':
                 return <ResetPass onChangeMode={this.onChangeMode}
@@ -106,14 +111,14 @@ export default class SignupLogin extends PureComponent {
                                   msg={s.msg} error={s.error}
                                   clearMsg={()=>{this.setState({msg:{}})}}
                                   onAction={this.onAction}
-                                  onClose={p.onClose}/>;
+                                  onClose={this.onClose}/>;
             case 'resend':
                 return <ResendLink onChangeMode={this.onChangeMode}
                                    ref='resend'
                                    progress={s.progress}
                                    msg={s.msg} error={s.error}
                                    onAction={this.onAction}
-                                   onClose={p.onClose}
+                                   onClose={this.onClose}
                                    data={s.data}/>;
             case 'changePassword':
                 return <ChangePassword onChangeMode={this.onChangeMode}
@@ -123,7 +128,7 @@ export default class SignupLogin extends PureComponent {
                                        msg={s.msg} error={s.error}
                                        clearMsg={()=>{this.setState({msg:{}})}}
                                        onAction={this.onAction}
-                                       onClose={p.onClose}
+                                       onClose={this.onClose}
                                        data={s.data}/>;
             default:
                 return null;

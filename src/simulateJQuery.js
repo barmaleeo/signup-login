@@ -8,12 +8,15 @@ window.$ = {
         setTimeout(() => {
             switch (uri){
                 case '/en/signup':
-                    if(data.phone ==='79999999999'){
-                        callback({status: 'ok',})
+                    if((data.phone ==='79999999999') || (data.email === 'test@test.te')){
+                        callback({status: 'ok', msg: 'Мы отправили Вам ссылку'})
                     }else{
                         callback({status: 'error', msg: 'Уже существует.'})
                     }
 
+                    break;
+                case '/en/resend-verification-email':
+                    callback({status: 'ok', msg:{confirmation: 'Ссылка отправлена'}})
                     break;
                 case '/en/confirm-code':
                     if(data.code ==='888888'){

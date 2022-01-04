@@ -1,6 +1,5 @@
 import React from 'react';
 import {render, unmountComponentAtNode} from 'react-dom';
-import SignupLogin from "./SignupLogin";
 import SignupLoginPhone from "./SignupLoginPhone";
 
 export default class SignupLoginWrapper {
