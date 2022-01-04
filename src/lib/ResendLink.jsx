@@ -16,7 +16,7 @@ export default class ResendLink extends Screen {
             <SLInner onClose={p.onClose} ref="content">
                 <h4>{t('Waiting for confirmation')}</h4>
 
-                <p>{t('We are waiting for confirmation for email')} </p>
+                <p>{t('We have sent an email with a confirmation link to')} </p>
                 <p className="text-center"><b>{p.data.email}</b></p>
                 <p>{t('Please, click on link in confirmation email.')}</p>
                 <p>{t('If you have not received a confirmation email, please click on the button below to resend it.')}</p>

@@ -1,6 +1,6 @@
 //import React from 'react';
 //import ReactDOM from 'react-dom';
-import './translation.js'
+import './lib/translation.js'
 import './simulateJQuery.js'
 import './index.css';
 //import App from './App';

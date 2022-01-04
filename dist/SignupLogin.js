@@ -53,7 +53,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var SignupLoginStyled = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: fixed;\n  top:0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 10000;\n  transition: background-color ease-in-out 0.5s;\n  &.in{\n    background: rgba(0,0,0, 0.1);  \n  }\n \n"])));
+var SignupLoginStyled = _styledComponents.default.div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: fixed;\n  top:0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 10000;\n  background: rgba(0,0,0,0);\n  transition: background-color ease-in-out 0.25s;\n  &.in{\n    background: rgba(0,0,0, 0.2);  \n  }\n \n"])));
 
 var $ = window.$;
 
@@ -84,6 +84,8 @@ var SignupLogin = /*#__PURE__*/function (_PureComponent) {
     _defineProperty(_assertThisInitialized(_this), "onClose", function () {
       _this.setState({
         show: 'out'
+      }, function () {
+        _this.props.onClose();
       });
     });
 
@@ -166,7 +168,7 @@ var SignupLogin = /*#__PURE__*/function (_PureComponent) {
               });
             },
             onAction: _this.onAction,
-            onClose: p.onClose
+            onClose: _this.onClose
           });
 
         case 'signup':
@@ -182,7 +184,7 @@ var SignupLogin = /*#__PURE__*/function (_PureComponent) {
                 msg: {}
               });
             },
-            onClose: p.onClose,
+            onClose: _this.onClose,
             onAction: _this.onAction
           });
 
@@ -199,7 +201,7 @@ var SignupLogin = /*#__PURE__*/function (_PureComponent) {
               });
             },
             onAction: _this.onAction,
-            onClose: p.onClose
+            onClose: _this.onClose
           });
 
         case 'resend':
@@ -210,7 +212,7 @@ var SignupLogin = /*#__PURE__*/function (_PureComponent) {
             msg: s.msg,
             error: s.error,
             onAction: _this.onAction,
-            onClose: p.onClose,
+            onClose: _this.onClose,
             data: s.data
           });
 
@@ -228,7 +230,7 @@ var SignupLogin = /*#__PURE__*/function (_PureComponent) {
               });
             },
             onAction: _this.onAction,
-            onClose: p.onClose,
+            onClose: _this.onClose,
             data: s.data
           });
 
@@ -243,9 +245,13 @@ var SignupLogin = /*#__PURE__*/function (_PureComponent) {
   _createClass(SignupLogin, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.setState({
-        show: 'in',
-        mode: this.props.token ? 'changePassword' : this.props.mode
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.setState({
+          show: 'in',
+          mode: _this2.props.token ? 'changePassword' : _this2.props.mode
+        });
       });
     }
   }, {

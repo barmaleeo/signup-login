@@ -9,8 +9,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = require("react-dom");
 
-var _SignupLogin = _interopRequireDefault(require("./SignupLogin"));
-
 var _SignupLoginPhone = _interopRequireDefault(require("./SignupLoginPhone"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

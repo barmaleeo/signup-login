@@ -64,7 +64,7 @@ var ResendLink = /*#__PURE__*/function (_Screen) {
       return /*#__PURE__*/_react.default.createElement(_SLInner.default, {
         onClose: p.onClose,
         ref: "content"
-      }, /*#__PURE__*/_react.default.createElement("h4", null, t('Waiting for confirmation')), /*#__PURE__*/_react.default.createElement("p", null, t('We are waiting for confirmation for email'), " "), /*#__PURE__*/_react.default.createElement("p", {
+      }, /*#__PURE__*/_react.default.createElement("h4", null, t('Waiting for confirmation')), /*#__PURE__*/_react.default.createElement("p", null, t('We have sent an email with a confirmation link to'), " "), /*#__PURE__*/_react.default.createElement("p", {
         className: "text-center"
       }, /*#__PURE__*/_react.default.createElement("b", null, p.data.email)), /*#__PURE__*/_react.default.createElement("p", null, t('Please, click on link in confirmation email.')), /*#__PURE__*/_react.default.createElement("p", null, t('If you have not received a confirmation email, please click on the button below to resend it.')), /*#__PURE__*/_react.default.createElement(_MsgResult.default, {
         msg: p.msg,
