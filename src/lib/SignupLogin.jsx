@@ -35,6 +35,7 @@ export default class SignupLogin extends PureComponent {
             this.props.onClose();
         })
     };
+
     componentDidMount(){
         setTimeout(()=>{
             this.setState({show:'in', mode:this.props.token?'changePassword':this.props.mode})
@@ -98,6 +99,7 @@ export default class SignupLogin extends PureComponent {
             case 'signup':
                 return <Signup onChangeMode={this.onChangeMode}
                                ref='signup'
+                               fields={p.signupFields}
                                success={s.success}
                                progress={s.progress}
                                msg={s.msg} error={s.error}

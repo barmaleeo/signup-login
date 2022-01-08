@@ -175,6 +175,7 @@ var SignupLogin = /*#__PURE__*/function (_PureComponent) {
           return /*#__PURE__*/_react.default.createElement(_Signup.default, {
             onChangeMode: _this.onChangeMode,
             ref: "signup",
+            fields: p.signupFields,
             success: s.success,
             progress: s.progress,
             msg: s.msg,

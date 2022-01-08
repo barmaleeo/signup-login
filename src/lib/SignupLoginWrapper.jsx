@@ -36,6 +36,11 @@ export default class SignupLoginWrapper {
     mountComponent = (e) => {
         e.preventDefault();
         render(<SignupLogin onClose={this.unmountComponent}
+                            signupFields={[
+                                {type: 'name', placeholder: 'Your Name'},
+                                {type: 'email',},
+                                {type: 'password',},
+                            ]}
                             mode={e.currentTarget.dataset.mode ?? 'signup'}
                             lang={'en'}/>, this.container);
     }

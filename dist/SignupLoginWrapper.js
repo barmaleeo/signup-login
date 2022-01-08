@@ -36,6 +36,14 @@ var SignupLoginWrapper = function SignupLoginWrapper() {
     e.preventDefault();
     (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_SignupLogin.default, {
       onClose: _this.unmountComponent,
+      signupFields: [{
+        type: 'name',
+        placeholder: 'Your Name'
+      }, {
+        type: 'email'
+      }, {
+        type: 'password'
+      }],
       mode: (_e$currentTarget$data = e.currentTarget.dataset.mode) !== null && _e$currentTarget$data !== void 0 ? _e$currentTarget$data : 'signup',
       lang: 'en'
     }), _this.container);
