@@ -5,7 +5,14 @@ import SignupLogin from "./SignupLogin";
 export default class SignupLoginWrapper {
     container = null;
 
-    constructor() {
+    constructor(options = {}) {
+        this.options = {
+            signupFields: [
+                {type: 'name', placeholder: 'Your Name'},
+                {type: 'email',},
+                {type: 'password',},
+            ],
+            ...options};
         this.container = document.getElementById('js-signup-login-container');
         if(!this.container){
             const elem = document.createElement('div');
@@ -23,6 +30,7 @@ export default class SignupLoginWrapper {
                 lang = path[1]
             }
             render(<SignupLogin onClose={this.unmountComponent}
+                                signupFields={this.options.signupFields}
                                 token={token}
                                 mode={token?'changePassword':mode}
                                 lang={lang}/>, self.container);
@@ -36,11 +44,7 @@ export default class SignupLoginWrapper {
     mountComponent = (e) => {
         e.preventDefault();
         render(<SignupLogin onClose={this.unmountComponent}
-                            signupFields={[
-                                {type: 'name', placeholder: 'Your Name'},
-                                {type: 'email',},
-                                {type: 'password',},
-                            ]}
+                            signupFields={this.options.signupFields}
                             mode={e.currentTarget.dataset.mode ?? 'signup'}
                             lang={'en'}/>, this.container);
     }

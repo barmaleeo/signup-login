@@ -19,12 +19,18 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var SignupLoginWrapper = function SignupLoginWrapper() {
   var _this = this;
+
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
   _classCallCheck(this, SignupLoginWrapper);
 
@@ -36,14 +42,7 @@ var SignupLoginWrapper = function SignupLoginWrapper() {
     e.preventDefault();
     (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_SignupLogin.default, {
       onClose: _this.unmountComponent,
-      signupFields: [{
-        type: 'name',
-        placeholder: 'Your Name'
-      }, {
-        type: 'email'
-      }, {
-        type: 'password'
-      }],
+      signupFields: _this.options.signupFields,
       mode: (_e$currentTarget$data = e.currentTarget.dataset.mode) !== null && _e$currentTarget$data !== void 0 ? _e$currentTarget$data : 'signup',
       lang: 'en'
     }), _this.container);
@@ -55,6 +54,16 @@ var SignupLoginWrapper = function SignupLoginWrapper() {
     }, 250);
   });
 
+  this.options = _objectSpread({
+    signupFields: [{
+      type: 'name',
+      placeholder: 'Your Name'
+    }, {
+      type: 'email'
+    }, {
+      type: 'password'
+    }]
+  }, options);
   this.container = document.getElementById('js-signup-login-container');
 
   if (!this.container) {
@@ -78,6 +87,7 @@ var SignupLoginWrapper = function SignupLoginWrapper() {
 
     (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_SignupLogin.default, {
       onClose: this.unmountComponent,
+      signupFields: this.options.signupFields,
       token: token,
       mode: token ? 'changePassword' : mode,
       lang: lang
