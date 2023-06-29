@@ -154,13 +154,22 @@ var SignupLoginPhone = /*#__PURE__*/function (_PureComponent) {
       var s = _this.state;
 
       switch (s.mode) {
-        case 'login': // return <Login onChangeMode={this.onChangeMode}
-        //               ref='login'
-        //               progress={s.progress}
-        //               msg={s.msg} error={s.error}
-        //               clearMsg={()=>{this.setState({msg:{}})}}
-        //               onAction={this.onAction}
-        //               onClose={p.onClose}/>;
+        case 'login':
+          return /*#__PURE__*/_react.default.createElement(_Login.default, {
+            onChangeMode: _this.onChangeMode,
+            ref: "login",
+            fields: ['phone', 'password'],
+            progress: s.progress,
+            msg: s.msg,
+            error: s.error,
+            clearMsg: function clearMsg() {
+              _this.setState({
+                msg: {}
+              });
+            },
+            onAction: _this.onAction,
+            onClose: p.onClose
+          });
 
         case 'signup':
           return /*#__PURE__*/_react.default.createElement(_SignupPhone.default, {

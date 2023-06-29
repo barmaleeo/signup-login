@@ -61,13 +61,25 @@ var Login = /*#__PURE__*/function (_Screen) {
   _createClass(Login, [{
     key: "render",
     value: function render() {
+      var _p$fields;
+
       var p = this.props;
       var s = this.state;
       var valid = s.emailValid && s.passwordValid;
+      var fields = (_p$fields = p.fields) !== null && _p$fields !== void 0 ? _p$fields : ['email', 'password'];
       return /*#__PURE__*/_react.default.createElement(_SLInner.default, {
         onClose: p.onClose,
         ref: "content"
-      }, /*#__PURE__*/_react.default.createElement("h4", null, t('Log in')), /*#__PURE__*/_react.default.createElement(_TextInput.default, {
+      }, /*#__PURE__*/_react.default.createElement("h4", null, t('Log in')), fields.includes('phone') && /*#__PURE__*/_react.default.createElement(_TextInput.default, {
+        onChange: this.onChangeValue.bind(this),
+        progress: p.progress,
+        msg: p.msg,
+        label: t('Phone'),
+        disabled: p.success,
+        name: "phone",
+        value: s.phone,
+        placeholder: t('Your Phone')
+      }), fields.includes('email') && /*#__PURE__*/_react.default.createElement(_TextInput.default, {
         onChange: this.onChangeValue.bind(this),
         progress: p.progress,
         msg: p.msg,

@@ -14,15 +14,26 @@ export default class Login extends Screen {
         const p = this.props;
         const s = this.state;
         const valid = s.emailValid && s.passwordValid;
+        const fields = p.fields ?? ['email', 'password']
         return (
             <SLInner onClose={p.onClose} ref="content">
                 <h4>{t('Log in')}</h4>
-                <TextInput onChange={this.onChangeValue.bind(this)}
-                           progress={p.progress} msg={p.msg}
-                           label={t('Email')}
-                           name="email"
-                           value={s.email} placeholder={t('Your Email')}/>
-
+                {fields.includes('phone') &&
+                    <TextInput onChange={this.onChangeValue.bind(this)}
+                               progress={p.progress}
+                               msg={p.msg}
+                               label={t('Phone')}
+                               disabled={p.success}
+                               name="phone"
+                               value={s.phone} placeholder={t('Your Phone')}/>
+                    }
+                {fields.includes('email') &&
+                    <TextInput onChange={this.onChangeValue.bind(this)}
+                               progress={p.progress} msg={p.msg}
+                               label={t('Email')}
+                               name="email"
+                               value={s.email} placeholder={t('Your Email')}/>
+                    }
                 <TextInput onChange={this.onChangeValue.bind(this)}
                            progress={p.progress} msg={p.msg}
                            label={t('Password')}

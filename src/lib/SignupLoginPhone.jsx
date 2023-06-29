@@ -83,13 +83,14 @@ export default class SignupLoginPhone extends PureComponent {
         const s = this.state;
         switch(s.mode){
             case 'login':
-                // return <Login onChangeMode={this.onChangeMode}
-                //               ref='login'
-                //               progress={s.progress}
-                //               msg={s.msg} error={s.error}
-                //               clearMsg={()=>{this.setState({msg:{}})}}
-                //               onAction={this.onAction}
-                //               onClose={p.onClose}/>;
+                 return <Login onChangeMode={this.onChangeMode}
+                               ref='login'
+                               fields={['phone', 'password']}
+                               progress={s.progress}
+                               msg={s.msg} error={s.error}
+                               clearMsg={()=>{this.setState({msg:{}})}}
+                               onAction={this.onAction}
+                               onClose={p.onClose}/>;
             case 'signup':
                  return <SignupPhone onChangeMode={this.onChangeMode}
                                      ref='signup'
@@ -98,7 +99,7 @@ export default class SignupLoginPhone extends PureComponent {
                                      msg={s.msg} error={s.error}
                                      clearMsg={()=>{this.setState({msg:{}})}}
                                      onClose={p.onClose}
-                                     onAction={this.onAction}/>;
+                                 onAction={this.onAction}/>;
             case 'confirm':
                 return <EnterCode onChangeMode={this.onChangeMode}
                                   ref='resend'
